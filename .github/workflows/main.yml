@@ -21,8 +21,8 @@ jobs:
 
       - name: Login to Hugging Face
         env:
-          HF: ${{ secrets.HF }}
-        run: huggingface-cli login --token "$HF"
+          HF: ${{ secrets.HG }}
+        run: huggingface-cli login --token "$HG"
 
       - name: Add remote
         run: git remote add huggingface https://huggingface.co/spaces/MYousafRana/demo
