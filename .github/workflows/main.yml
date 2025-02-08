@@ -27,5 +27,10 @@ jobs:
       - name: Add remote
         run: git remote add huggingface https://huggingface.co/spaces/MYousafRana/Demo
 
+      - name: Set up Hugging Face credentials
+        run: |
+          git config --global credential.helper store
+          echo "https://huggingface.co:${{ secrets.HG }}@huggingface.co" > ~/.git-credentials
+
       - name: Push to Hugging Face Space
         run: git push --force huggingface main
