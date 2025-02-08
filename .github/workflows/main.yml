@@ -25,7 +25,7 @@ jobs:
         run: huggingface-cli login --token ${{ secrets.HG }} --add-to-git-credential
 
       - name: Add remote
-        run: git remote add huggingface https://huggingface.co/spaces/MYousafRana/demo
+        run: git remote add huggingface https://huggingface.co/spaces/MYousafRana/Demo
 
       - name: Push to Hugging Face Space
         run: git push --force huggingface main
