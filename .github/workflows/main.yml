@@ -1,25 +1,29 @@
-name: sync to huggingface hub
+name: Deploy to Hugging Face Spaces
+
 on:
   push:
-    branches: [main]
-
-  # to run this workflow manually from the github action tab
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  sync-to-hub:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Install Hugging Face CLI
+        run: pip install huggingface_hub
+
+      - name: Login to Hugging Face
+        run: huggingface-cli login --token ${{ secrets.HF }}
+
       - name: Add remote
-        env:
-          HF: ${{secrets.HF}}
-        run: git remote add space git clone https://huggingface.co/spaces/MYousafRana/demo
-      - name: push to hub
-        env:
-          HF: ${{secrets.HF}}
-        run: git push --force https://huggingface.co/spaces/MYousafRana/demo main
-            
-    
+        run: git remote add huggingface https://huggingface.co/spaces/MYousafRana/demo
+
+      - name: Push to Hugging Face Space
+        run: git push --force huggingface main
