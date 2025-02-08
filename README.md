@@ -1,13 +1,14 @@
 ---
 title: hugging-face-demo
-emoji: 🐱‍🏍
+emoji: 🐠
 colorFrom: purple
 colorTo: purple
 sdk: gradio
-sdk_version: "latest"
+sdk_version: 5.15.0
 app_file: app.py
 pinned: false
 licence: cc
+license: cc
 ---
 
 
